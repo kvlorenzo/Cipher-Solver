@@ -6,17 +6,19 @@ input object - tracks the overall settings and the current input of the cipher
 	settings = array representing the specific settings of a cipher technique
 */
 
-cipherMap = {}
+import Caesar from './ciphers/Caesar.js';
+
+var cipherMap = {};
 cipherMap['Caesar'] = new Caesar();
-cipherMap['Vigenere'] = new Vigenere();
+//cipherMap['Vigenere'] = new Vigenere();
 
 var cipher = cipherMap['Caesar'];
 
 var isEncrypting = true;
-settings = [];
+var settings = [];
 
 function toggleEncDec() {
-	isEncrypting = !isEncrypting;
+  isEncrypting = !isEncrypting;
   console.log('Encrypt/Decrypt button toggled to ' + isEncrypting);
   updateOutput();
 }

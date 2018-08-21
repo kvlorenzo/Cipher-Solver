@@ -1,4 +1,4 @@
-class Caesar {
+export default class Caesar {
 
 	constructor() {
 		this.defaultSettings = ['7'];
