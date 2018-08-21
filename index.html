@@ -68,27 +68,27 @@
 						<div class="form-group">		
 								<div class="msglabel"><strong>Message</strong></div>
 								<textarea id="messagebox" name="messagebox." 
-										placeholder="Write your message here..." oninput="testMe2()"></textarea>
+										placeholder="Write your message here..." oninput="updateOutput()"></textarea>
 						</div>
 						<div class="row">
 							<div class="col-xs-4">
 								<h3>Cipher Settings</h3>
 							</div>
 							<div class="col-xs-3">
-							 <button type="button" id="togBtn" class="link" onclick="dispSettings()"
+							 <button type="button" id="togBtn" class="link" onclick="displaySettings()"
 							 		data-text-swap="Hide Settings">Show/Hide Settings</button>
 							</div>
 						</div>
 						<div id="settings"><h4><strong>Caesar<br></strong></h4>
 							<label for="Shift Value">Shift Value</label>
-							<input type="text" name="shiftVal" id="shiftVal" oninput="testMe2()"
+							<input type="text" name="setting" id="shiftVal" oninput="updateSettings()"
 									placeholder="Enter value (Default 7)">
 						</div>
 						<h4>Output:</h4>
 						<textarea id="outputbox" name="messagebox." 
 										placeholder="Write your message here...">Hello</textarea>
 						<button type="button" id="showStepsBtn">Show Steps</button>
-						<div id="steps" oninput="togSteps()"></div>
+						<div id="steps" oninput="toggleSteps()"></div>
 				</form>
 			</div>
 		</div>

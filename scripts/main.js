@@ -18,6 +18,7 @@ settings = [];
 function toggleEncDec() {
 	isEncrypting = !isEncrypting;
   console.log('Encrypt/Decrypt button toggled to ' + isEncrypting);
+  updateOutput();
 }
 
 function setTechnique() {
@@ -25,32 +26,33 @@ function setTechnique() {
   console.log('Technique set to ' + technique);
   cipher = cipherMap[technique];
   document.getElementById('settings').innerHTML = cipher.HTMLText;
-
+  updateSettings();
+  updateOutput();
 }
 
-function dispSettings() {
-	console.log('dispSettings() called');
+function displaySettings() {
+	console.log('displaySettings() called');
 	var disp = document.getElementById('settings');
 	disp.style.display = (disp.style.display === 'none') ? 'block' : 'none';
 }
 
-function testMe2() {
-	console.log('Input area changed');
+function updateOutput() {
+	console.log('updateOutput() called');
 	var message = document.getElementById('messagebox').value;
-	var shiftVal = parseInt(document.getElementById('shiftVal').value);
 	document.getElementById('outputbox').innerHTML = 
-		(isNaN(shiftVal)) ? caesar(message, 7) : caesar(message, shiftVal);
-  var test = document.getElementById('settings');
-  test.innerHTML = cipher.HTMLText;
+		(isEncrypting ? cipher.encrypt(message, settings) : 
+                    cipher.decrypt(message, settings));
 }
 
 function updateSettings() {
-  
+  settings = Array.from(document.getElementsByName('setting'), x => x.value);
+  console.log("Settings: " + settings + " Bool:" + (typeof(settings[0])));
+  updateOutput();
 }
 
-function togSteps() {
+function toggleSteps() {
+  console.log('toggleSteps() called');
   var message = document.getElementById('messagebox').value;
-  var shiftVal = parseInt(document.getElementById('shiftVal').value);
   document.getElementById('steps').innerHTML = 
-    cipher.showSteps(message, );
+  cipher.showSteps(message, settings);
 }
