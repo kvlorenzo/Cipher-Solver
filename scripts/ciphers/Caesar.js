@@ -3,7 +3,7 @@ export default class Caesar {
 	constructor() {
 		this.defaultSettings = ['7'];
 		this.HTMLText = 
-			'<h4><strong>Caesar poop<br></strong></h4>\n' + 
+			'<h4><strong>Caesar<br></strong></h4>\n' + 
 			'<label for="Shift Value">Shift Value</label>\n' +
 			'<input type="text" name="setting" id="shiftVal"\n' +  
 			'placeholder="Enter value (Default 7)">\n';

@@ -30,7 +30,7 @@ function toggleSteps() {
 $(document).ready(function() {
 
   function updateOutput() {
-  console.log('updateOutput() called from jQuery');
+  console.log('updateOutput() called');
   var message = $('#inputbox').val();
   console.log("message is: " + message);
   $('#outputbox').val((isEncrypting ? cipher.encrypt(message, settings) : 
@@ -38,24 +38,26 @@ $(document).ready(function() {
   }
 
   function updateSettings() {
-    settings = Array.from($("[name='setting']").val());
-    console.log("Settings type: " + typeof(settings));
-    console.log("Settings: " + settings + " Bool:" + (typeof(settings[0])));
+    settings = $("[name='setting']").map(function() {
+      return $(this).val();
+    });
+    console.log('Settings updated');
     updateOutput();
   }
 
   /* Updates the encrypt/decrypt option when the slider is toggled */
   $('#togBtn').on('click', function() {
     isEncrypting = !isEncrypting;
-    console.log('Encrypt/Decrypt button toggled to ' + isEncrypting + ' in jQuery');
+    console.log('Encrypt/Decrypt button toggled to ' + isEncrypting);
     updateOutput();
   });
 
   $('#technique').change(function() {
     let technique = $(this).val();
-    console.log('Technique set to ' + technique + ' inJQuery');
+    console.log('Technique set to ' + technique);
     cipher = cipherMap[technique];
     $('#settings').html(cipher.HTMLText);
+    console.log("Settings HTML" + $('#settings').html());
     updateSettings();
     updateOutput();
   });
@@ -70,7 +72,7 @@ $(document).ready(function() {
     updateOutput();
   });
 
-  $("[name='setting']").keyup(function() {
+  $("#settings").on('keyup', "[name='setting']", function() {
     console.log('Settings changed');
     updateSettings();
     updateOutput();
