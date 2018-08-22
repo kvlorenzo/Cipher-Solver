@@ -1,4 +1,4 @@
-class Vigenere {
+export default class Vigenere {
 
 	constructor() {
 		this.defaultSettings = ['7'];

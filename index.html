@@ -26,8 +26,6 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
 				integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
 				crossorigin="anonymous"></script>
-<!--		<script src="scripts/ciphers/Caesar.js"></script>
-		<script src="scripts/ciphers/Vigenere.js"></script> -->
 		<script  type="module" src="scripts/main.js"></script>
 		<header>
 			<div class="container">
@@ -50,7 +48,7 @@
 				<form id="inputform">			
 						<div class="form-group">		
 								<label class="switch">
-									<input type="checkbox" id="togBtn" oninput="toggleEncDec()">
+									<input type="checkbox" id="togBtn">
 									<div class="slider round">
 										<span class="dectoggle">DECRYPT</span>
 										<span class="enctoggle">ENCRYPT</span>
@@ -60,28 +58,28 @@
 						
 						<div class="form-group">							
 							<label for="technique">Cipher Technique</label>
-							<select id="technique" class="form-control" onchange="setTechnique()">
+							<select id="technique" class="form-control">
 								<option value="Caesar">Caesar</option>
 								<option value="Vigenere">Vigenere</option>
 							</select>
 						</div>
 						<div class="form-group">		
 								<div class="msglabel"><strong>Message</strong></div>
-								<textarea id="messagebox" name="messagebox." 
-										placeholder="Write your message here..." oninput="updateOutput()"></textarea>
+								<textarea id="inputbox" name="messagebox." 
+										placeholder="Write your message here..."></textarea>
 						</div>
 						<div class="row">
 							<div class="col-xs-4">
 								<h3>Cipher Settings</h3>
 							</div>
 							<div class="col-xs-3">
-							 <button type="button" id="togBtn" class="link" onclick="displaySettings()"
+							 <button type="button" id="settingToggle" class="link"
 							 		data-text-swap="Hide Settings">Show/Hide Settings</button>
 							</div>
 						</div>
 						<div id="settings"><h4><strong>Caesar<br></strong></h4>
 							<label for="Shift Value">Shift Value</label>
-							<input type="text" name="setting" id="shiftVal" oninput="updateSettings()"
+							<input type="text" name="setting" id="shiftVal"
 									placeholder="Enter value (Default 7)">
 						</div>
 						<h4>Output:</h4>

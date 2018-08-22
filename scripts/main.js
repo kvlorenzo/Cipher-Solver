@@ -7,50 +7,16 @@ input object - tracks the overall settings and the current input of the cipher
 */
 
 import Caesar from './ciphers/Caesar.js';
+import Vigenere from './ciphers/Vigenere.js';
 
 var cipherMap = {};
 cipherMap['Caesar'] = new Caesar();
-//cipherMap['Vigenere'] = new Vigenere();
+cipherMap['Vigenere'] = new Vigenere();
 
 var cipher = cipherMap['Caesar'];
 
 var isEncrypting = true;
 var settings = [];
-
-function toggleEncDec() {
-  isEncrypting = !isEncrypting;
-  console.log('Encrypt/Decrypt button toggled to ' + isEncrypting);
-  updateOutput();
-}
-
-function setTechnique() {
-  let technique = document.getElementById('technique').value;
-  console.log('Technique set to ' + technique);
-  cipher = cipherMap[technique];
-  document.getElementById('settings').innerHTML = cipher.HTMLText;
-  updateSettings();
-  updateOutput();
-}
-
-function displaySettings() {
-	console.log('displaySettings() called');
-	var disp = document.getElementById('settings');
-	disp.style.display = (disp.style.display === 'none') ? 'block' : 'none';
-}
-
-function updateOutput() {
-	console.log('updateOutput() called');
-	var message = document.getElementById('messagebox').value;
-	document.getElementById('outputbox').innerHTML = 
-		(isEncrypting ? cipher.encrypt(message, settings) : 
-                    cipher.decrypt(message, settings));
-}
-
-function updateSettings() {
-  settings = Array.from(document.getElementsByName('setting'), x => x.value);
-  console.log("Settings: " + settings + " Bool:" + (typeof(settings[0])));
-  updateOutput();
-}
 
 function toggleSteps() {
   console.log('toggleSteps() called');
@@ -58,3 +24,46 @@ function toggleSteps() {
   document.getElementById('steps').innerHTML = 
   cipher.showSteps(message, settings);
 }
+
+
+$(document).ready(function() {
+
+  function updateOutput() {
+  console.log('updateOutput() called from jQuery');
+  var message = $('#messagebox').val();
+  $('#outputbox').html((isEncrypting ? cipher.encrypt(message, settings) : 
+    cipher.decrypt(message, settings)));
+  }
+
+  function updateSettings() {
+    settings = Array.from($("[name='setting']"), x => $(x).val());
+    console.log("Settings: " + settings + " Bool:" + (typeof(settings[0])));
+    updateOutput();
+  }
+
+  /* Updates the encrypt/decrypt option when the slider is toggled */
+  $('#togBtn').on('click', function() {
+    isEncrypting = !isEncrypting;
+    console.log('Encrypt/Decrypt button toggled to ' + isEncrypting + ' in jQuery');
+    updateOutput();
+  });
+
+  $('#technique').change(function() {
+    let technique = $(this).val();
+    console.log('Technique set to ' + technique + ' inJQuery');
+    cipher = cipherMap[technique];
+    $('#settings').html(cipher.HTMLText);
+    updateSettings();
+    updateOutput();
+  });
+
+  $('#settingToggle').on('click', function() {
+    console.log('settings display toggled');
+    $('#settings').toggle();
+  });
+
+  $('#inputbox').change(function() {
+    console.log('inputbox changed');
+  });
+
+});
