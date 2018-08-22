@@ -5,15 +5,20 @@ export default class Caesar {
 		this.HTMLText = 
 			'<h4><strong>Caesar poop<br></strong></h4>\n' + 
 			'<label for="Shift Value">Shift Value</label>\n' +
-			'<input type="text" name="shiftVal" id="shiftVal"\n' +  
-			'oninput="testMe2()" + placeholder="Enter value (Default 7)">\n';
+			'<input type="text" name="setting" id="shiftVal"\n' +  
+			'placeholder="Enter value (Default 7)">\n';
 	}
 
 	encrypt(str, settings) {
 		// check for invalid settings
 		if (!settings || settings.length <= 0 || isNaN(parseInt(settings[0]))) {
 			return this.encrypt(str, this.defaultSettings);
-		} 
+		}
+
+		// check for invalid settings
+		if (typeof(str) == "undefined") {
+			return "";
+		}
 
 		// create shift val settings
 		var shiftVal = parseInt(settings[0]);

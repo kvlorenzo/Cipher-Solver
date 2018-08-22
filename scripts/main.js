@@ -18,6 +18,7 @@ var cipher = cipherMap['Caesar'];
 var isEncrypting = true;
 var settings = [];
 
+
 function toggleSteps() {
   console.log('toggleSteps() called');
   var message = document.getElementById('messagebox').value;
@@ -30,13 +31,15 @@ $(document).ready(function() {
 
   function updateOutput() {
   console.log('updateOutput() called from jQuery');
-  var message = $('#messagebox').val();
-  $('#outputbox').html((isEncrypting ? cipher.encrypt(message, settings) : 
+  var message = $('#inputbox').val();
+  console.log("message is: " + message);
+  $('#outputbox').val((isEncrypting ? cipher.encrypt(message, settings) : 
     cipher.decrypt(message, settings)));
   }
 
   function updateSettings() {
-    settings = Array.from($("[name='setting']"), x => $(x).val());
+    settings = Array.from($("[name='setting']").val());
+    console.log("Settings type: " + typeof(settings));
     console.log("Settings: " + settings + " Bool:" + (typeof(settings[0])));
     updateOutput();
   }
@@ -62,8 +65,14 @@ $(document).ready(function() {
     $('#settings').toggle();
   });
 
-  $('#inputbox').change(function() {
+  $('#inputbox').on('input', function() {
     console.log('inputbox changed');
+    updateOutput();
   });
 
+  $("[name='setting']").keyup(function() {
+    console.log('Settings changed');
+    updateSettings();
+    updateOutput();
+  });
 });
