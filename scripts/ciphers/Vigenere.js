@@ -1,19 +1,19 @@
 export default class Vigenere {
 
 	constructor() {
-		this.defaultSettings = ['7'];
+		this.defaultSettings = ['key'];
 		this.HTMLText = 
 			'This is a test lol\n';
 	}
 
 	encrypt(str, settings) {
 		// check for invalid settings
-		if (!settings || settings.length <= 0 || isNaN(parseInt(settings[0]))) {
+		if (!settings || settings.length <= 0) {
 			return encrypt(str, this.defaultSettings);
 		} 
 
-		// create shift val settings
-		var shiftVal = parseInt(settings[0]);
+		// create key settings
+		var key = parseInt(settings[0]);
 		// ensure the shift value is positive
 		while (shiftVal < 0) {
 			shiftVal += 26;

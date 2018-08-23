@@ -7,6 +7,7 @@ export default class Caesar {
 			'<label for="Shift Value">Shift Value</label>\n' +
 			'<input type="text" name="setting" id="shiftVal"\n' +  
 			'placeholder="Enter value (Default 7)">\n';
+		this.warning = 'Invalid shift value, using default value (7)';
 	}
 
 	encrypt(str, settings) {
@@ -33,12 +34,12 @@ export default class Caesar {
 			var curChar = str[i];
 
 			// Check if it's a letter then get its character code
-			if (curChar.match(/[a-z]/i)) {
+			if (curChar.match(/^[A-Za-z]+$/)) {
 				var charCode = str.charCodeAt(i);
 
 				if ((charCode >= 65) && (charCode <= 90)) // uppercase
 					curChar = 
-						String.fromCharCode(((code - 65 + shiftVal) % 26) + 65);
+						String.fromCharCode(((charCode - 65 + shiftVal) % 26) + 65);
 				else if ((charCode >= 97) && (charCode <= 122)) // lowercase
 					curChar = 
 						String.fromCharCode(((charCode - 97 + shiftVal) % 26) + 97);
@@ -75,5 +76,11 @@ export default class Caesar {
 			'a b c d e... w x y z\n' + '|    |    |\n' + 'v    v    v\n' +
 			this.encrypt('a b c d e... w x y z', [shiftVal.toString()]); 
 			return output;
+	}
+
+	hasInvalidSettings(settings) {
+		// we will not count a setting as invalid if no setting is passed in
+		return(settings && settings.length > 0 && 
+			     settings[0] !== '' && isNaN(parseInt(settings[0])));
 	}
 }

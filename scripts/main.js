@@ -42,6 +42,13 @@ $(document).ready(function() {
       return $(this).val();
     });
     console.log('Settings updated');
+    if (cipher.hasInvalidSettings(settings)) {
+      $('#keywarning').html(cipher.warning);
+      $('#keywarning').show();
+    }
+    else {
+      $('#keywarning').hide();
+    }
     updateOutput();
   }
 

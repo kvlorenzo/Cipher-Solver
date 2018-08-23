@@ -140,3 +140,8 @@ button.link {
   border: none;
   padding-top: 25px;
 }
+
+#keywarning {
+  color: red;
+  display: none;
+}
