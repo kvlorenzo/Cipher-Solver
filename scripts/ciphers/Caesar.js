@@ -7,7 +7,8 @@ export default class Caesar {
 			'<label for="Shift Value">Shift Value</label>\n' +
 			'<input type="text" name="setting" id="shiftVal"\n' +  
 			'placeholder="Enter value (Default 7)">\n';
-		this.warning = 'Invalid shift value, using default value (7)';
+		this.warning = 'Invalid shift value (must be number only), ' +
+		               'using default value (7)';
 	}
 
 	encrypt(str, settings) {
