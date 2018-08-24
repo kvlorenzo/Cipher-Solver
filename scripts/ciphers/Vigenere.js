@@ -50,15 +50,17 @@ export default class Vigenere {
 	}
 
 	decrypt(str, settings) {
-		if (!settings || settings.length <= 0 || (/[a-z]/i.test(settings[0]))) {
+		if (!settings || settings.length <= 0 || !(/[a-z]/i.test(settings[0]))) {
 			settings = this.defaultSettings;
 		}
 		var oldKey = settings[0].toLowerCase();
 		var newKey = '';
 		for (var i = 0; i < oldKey.length; i++) {
 			newKey += 
-				String.fromCharCode(oldKey.charCodeAt(i) - 26);
+				String.fromCharCode
+					(((26 - (oldKey.charCodeAt(i) - 97) % 26) % 26) + 97);
 		}
+		console.log('oldKey: ' + oldKey + ' New key: ' + newKey);
 		return this.encrypt(str, [newKey]);
 	}
 
