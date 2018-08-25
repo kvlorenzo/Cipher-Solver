@@ -1,32 +1,30 @@
-/*
-input object - tracks the overall settings and the current input of the cipher
-	isEncrypting = true if user is encrypting the message, false if decrypting
-	message = message the user is ciphering
-	technique = the ciphering technique the user chooses to cipher with
-	settings = array representing the specific settings of a cipher technique
-*/
-
+// Imports for the ciphering techniques are all located in the ciphers folder
 import Caesar from './ciphers/Caesar.js';
 import Vigenere from './ciphers/Vigenere.js';
+
 
 var cipherMap = {};
 cipherMap['Caesar'] = new Caesar();
 cipherMap['Vigenere'] = new Vigenere();
 
+// default cipher technique is Caesar
 var cipher = cipherMap['Caesar'];
 
+/* 
+boolean to check if the decrypt or encrypt button is chosen
+true = encrypt, false = decrypt    
+*/
 var isEncrypting = true;
+
+/*
+Ciphering techniques will be kept in an array of strings; will be
+retrieved by grabbing the value of tags with the name of 'setting'
+*/
 var settings = [];
 
-
-function toggleSteps() {
-  console.log('toggleSteps() called');
-  var message = document.getElementById('messagebox').value;
-  document.getElementById('steps').innerHTML = 
-  cipher.showSteps(message, settings);
-}
-
-
+/*
+handles the events from the initial page
+*/
 $(document).ready(function() {
 
   function updateOutput() {
@@ -52,7 +50,6 @@ $(document).ready(function() {
     updateOutput();
   }
 
-  /* Updates the encrypt/decrypt option when the slider is toggled */
   $('#togBtn').on('click', function() {
     isEncrypting = !isEncrypting;
     console.log('Encrypt/Decrypt button toggled to ' + isEncrypting);
@@ -83,5 +80,13 @@ $(document).ready(function() {
     console.log('Settings changed');
     updateSettings();
     updateOutput();
+  });
+
+  $('#showStepsBtn').on('click', function() {
+    var message = $('#inputbox').val();
+    console.log('Show steps button clicked');
+    $('#steps').hide();
+    $('#steps').html(cipher.showSteps(message, settings, isEncrypting));
+    $('#steps').slideDown('slow', function() {});
   });
 });
