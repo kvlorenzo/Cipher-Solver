@@ -67,15 +67,28 @@ export default class Caesar {
 		if (!isEncrypting) {
 			shiftVal = -shiftVal;
 		}
+		var strLen = Math.min(str.length, 7);
 		var output = '';
-		output += ((isEncrypting) ? 'Encrypting ' : 'Decrypting ') + 
+		output += ((isEncrypting) ? 'Encrypting "' : 'Decrypting "') + 
 			((str.length > 7) ? str.substring(0, 7) + 
-				'... First 7 characters' : str) + '\n\n' +
+				'"... First 7 characters' : str + '"') + '<br><br>' +
 			'Step 1: Rotate the alphabet to the ' + 
 			((isEncrypting) ? 'right ' : 'left ') + 
-			'by ' + shiftVal + ' character(s)\n' +
-			'a b c d e... w x y z\n' + '|    |    |\n' + 'v    v    v\n' +
-			this.encrypt('a b c d e... w x y z', [shiftVal.toString()]); 
+			'by ' + Math.abs(shiftVal) + ' character(s)<br>' +
+			'Old: a b c d e... w x y z  -><br>New: ' +
+			this.encrypt('a b c d e... w x y z', [shiftVal.toString()]) +
+			'<br><br>Step 2: Match the characters in the message to the newly ' +
+			'shifted alphabet<br>';
+			for (var i = 0; i < strLen; i++) {
+				var curChar = str.charAt(i);
+				if (curChar.match(/[a-z]/i)) {
+					output += (curChar + ' -> shift by ' + shiftVal + ' -> ' + 
+						        this.encrypt(curChar, [shiftVal.toString()]) + '<br>');
+				}
+			}
+			output += '<br>Step 3: Recombine the letters in the final message<br>' +
+			'Initial message: ' + str + '<br>Final message: ' + 
+			this.encrypt(str, [shiftVal.toString()]);
 			return output;
 	}
 
