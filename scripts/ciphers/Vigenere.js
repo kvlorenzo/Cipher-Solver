@@ -86,8 +86,8 @@ export default class Vigenere {
 
 	hasInvalidSettings(settings) {
 		// we will not count a setting as invalid if no setting is passed in
-		return(settings && settings.length > 0 && 
-			     settings[0] !== '' && !(/[a-z]/i.test(settings[0])));
+		return (settings && settings.length > 0 && 
+			     settings[0] !== '' && !(settings[0].match(/^[A-Za-z]+$/)));
 	}
 
 	createKeyArray(keyword) {
