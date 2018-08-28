@@ -53,14 +53,7 @@ export default class Vigenere {
 		if (!settings || settings.length <= 0 || !(/[a-z]/i.test(settings[0]))) {
 			settings = this.defaultSettings;
 		}
-		var oldKey = settings[0].toLowerCase();
-		var newKey = '';
-		for (var i = 0; i < oldKey.length; i++) {
-			newKey += 
-				String.fromCharCode
-					(((26 - (oldKey.charCodeAt(i) - 97) % 26) % 26) + 97);
-		}
-		console.log('oldKey: ' + oldKey + ' New key: ' + newKey);
+		var newKey = this.createDecryptKey(settings[0]);
 		return this.encrypt(str, [newKey]);
 	}
 
@@ -68,19 +61,34 @@ export default class Vigenere {
 		if (!settings || settings.length <= 0 || isNaN(parseInt(settings[0]))) {
 			settings = this.defaultSettings;
 		}
-		var shiftVal = parseInt(settings[0]);
-		if (!isEncrypting) {
-			shiftVal = -shiftVal;
-		}
+		var key = (isEncrypting) ? settings[0] : 
+							this.createDecryptKey(settings[0]);
+		var strLen = Math.min(str.length, 7);
 		var output = '';
-		output += ((isEncrypting) ? 'Encrypting ' : 'Decrypting ') + 
+		output += ((isEncrypting) ? 'Encrypting "' : 'Decrypting "') + 
 			((str.length > 7) ? str.substring(0, 7) + 
-				'... First 7 characters' : str) + '\n\n' +
-			'Step 1: Rotate the alphabet to the ' + 
-			((isEncrypting) ? 'right ' : 'left ') + 
-			'by ' + shiftVal + ' character(s)\n' +
-			'a b c d e... w x y z\n' + '|    |    |\n' + 'v    v    v\n' +
-			encrypt('a b c d e... w x y z', [shiftVal.toString()]); 
+				'"... First 7 characters' : str + '"') + '<br><br>' +
+			'Step 1: Find the shift values of the characters in the key<br> ' +
+			' Encrypting has a positive shift (> 0), decrypting has negative (< 0)' +
+			'<br> Shift val will be as follows: a = 0, b = 1, c = 2,... z = 25<br>'; 
+			for (var i = 0; i < key.length; i++) {
+				var curChar = settings[0].charAt(i);
+				if (curChar.match(/[a-z]/i)) {
+					output += (curChar + ' ->  ' + curChar.toLowerCase().charCodeAt(0));
+				}
+			}
+			output +='<br><br>Step 2: Match the characters in the message to the newly ' +
+			'shifted alphabet<br>';
+			for (var i = 0; i < strLen; i++) {
+				var curChar = str.charAt(i);
+				if (curChar.match(/[a-z]/i)) {
+					output += (curChar + ' -> shift by ' + shiftVal + ' -> ' + 
+						        this.encrypt(curChar, [shiftVal.toString()]) + '<br>');
+				}
+			}
+			output += '<br>Step 3: Recombine the letters in the final message<br>' +
+			'Initial message: ' + str + '<br>Final message: ' + 
+			this.encrypt(str, [shiftVal.toString()]);
 			return output;
 	}
 
@@ -88,6 +96,16 @@ export default class Vigenere {
 		// we will not count a setting as invalid if no setting is passed in
 		return (settings && settings.length > 0 && 
 			     settings[0] !== '' && !(settings[0].match(/^[A-Za-z]+$/)));
+	}
+
+	createDecryptKey(keyword) {
+		var oldKey = keyword.toLowerCase();
+		var newKey = '';
+		for (var i = 0; i < oldKey.length; i++) {
+			newKey += 
+			String.fromCharCode(((26 - (oldKey.charCodeAt(i) - 97) % 26) % 26) + 97);
+		}
+		return newKey;
 	}
 
 	createKeyArray(keyword) {
