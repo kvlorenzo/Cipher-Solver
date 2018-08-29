@@ -64,6 +64,10 @@ export default class Vigenere {
 		var key = (isEncrypting) ? settings[0] : 
 							this.createDecryptKey(settings[0]);
 		var strLen = Math.min(str.length, 7);
+		var shiftValArr = [];
+		for (var i = 0; i < key.length; i++) {
+			shiftValArr.push(key.charCodeAt(i) - 97);
+		}
 		var output = '';
 		output += ((isEncrypting) ? 'Encrypting "' : 'Decrypting "') + 
 			((str.length > 7) ? str.substring(0, 7) + 
@@ -75,8 +79,8 @@ export default class Vigenere {
 				var curChar = settings[0].charAt(i);
 				var shiftVal = curChar.toLowerCase().charCodeAt(0);
 				if (curChar.match(/[a-z]/i)) {
-					output += (curChar + ' ->  ' + 
-										(isEncrypting ? shiftVal - 97 : -(shiftVal - 97)) + '<br>');
+					output += (curChar + ' ->  ' + shiftValArr[i] + '<br>';
+										//(isEncrypting ? shiftVal - 97 : -(shiftVal - 97)) + '<br>');
 				}
 			}
 			output +='<br>Step 2: Assign each letter in the message to a letter in' +
