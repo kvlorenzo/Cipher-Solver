@@ -58,7 +58,7 @@ export default class Vigenere {
 	}
 
 	showSteps(str, settings, isEncrypting) {
-		if (!settings || settings.length <= 0 || isNaN(parseInt(settings[0]))) {
+		if (!settings || settings.length <= 0 || !(/[a-z]/i.test(settings[0]))) {
 			settings = this.defaultSettings;
 		}
 		var key = (isEncrypting) ? settings[0] : 
@@ -73,20 +73,29 @@ export default class Vigenere {
 			'<br> Shift val will be as follows: a = 0, b = 1, c = 2,... z = 25<br>'; 
 			for (var i = 0; i < key.length; i++) {
 				var curChar = settings[0].charAt(i);
+				var shiftVal = curChar.toLowerCase().charCodeAt(0);
 				if (curChar.match(/[a-z]/i)) {
-					output += (curChar + ' ->  ' + curChar.toLowerCase().charCodeAt(0));
+					output += (curChar + ' ->  ' + 
+										(isEncrypting ? shiftVal - 97 : -(shiftVal - 97)) + '<br>');
 				}
 			}
-			output +='<br><br>Step 2: Match the characters in the message to the newly ' +
-			'shifted alphabet<br>';
+			output +='<br>Step 2: Assign each letter in the message to a letter in' +
+			' the key. Repeat the key if necessary.<br>';
+			var keyIdx = 0;
 			for (var i = 0; i < strLen; i++) {
 				var curChar = str.charAt(i);
+				var shiftVal = key.charAt(keyIdx).toLowerCase().charCodeAt(0);
 				if (curChar.match(/[a-z]/i)) {
-					output += (curChar + ' -> shift by ' + shiftVal + ' -> ' + 
-						        this.encrypt(curChar, [shiftVal.toString()]) + '<br>');
+					output += (curChar + ' -> ' + settings[0].charAt(keyIdx) + '(' + 
+										(isEncrypting ? shiftVal - 97 : -(shiftVal - 97)) + 
+										')<br>');
+					keyIdx = ++keyIdx % key.length;
 				}
 			}
-			output += '<br>Step 3: Recombine the letters in the final message<br>' +
+			output += '<br>Step 3: Shift the message\'s letters by their' +
+			'corresponding key letter\'s shift values<br>';
+
+			output += '<br>Step 4: Recombine the letters in the final message<br>' +
 			'Initial message: ' + str + '<br>Final message: ' + 
 			this.encrypt(str, [shiftVal.toString()]);
 			return output;
