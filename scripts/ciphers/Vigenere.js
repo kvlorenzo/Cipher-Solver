@@ -70,7 +70,7 @@ export default class Vigenere {
 				'"... First 7 characters' : str + '"') + '<br><br>' +
 			'Step 1: Find the shift values of the characters in the key<br> ' +
 			' Encrypting has a positive shift (> 0), decrypting has negative (< 0)' +
-			'<br> Shift val will be as follows: a = 0, b = 1, c = 2,... z = 25<br>'; 
+			'<br> Shift value will be as follows: a = 0, b = 1, c = 2,... z = 25<br>';
 			for (var i = 0; i < key.length; i++) {
 				var curChar = settings[0].charAt(i);
 				var shiftVal = curChar.toLowerCase().charCodeAt(0);
@@ -92,12 +92,23 @@ export default class Vigenere {
 					keyIdx = ++keyIdx % key.length;
 				}
 			}
-			output += '<br>Step 3: Shift the message\'s letters by their' +
+			output += '<br>Step 3: Shift the message\'s letters by their ' +
 			'corresponding key letter\'s shift values<br>';
+			keyIdx = 0;
+			for (var i = 0; i < strLen; i++) {
+				var curChar = str.charAt(i);
+				var shiftVal = key.charAt(keyIdx).toLowerCase().charCodeAt(0);
+				if (curChar.match(/[a-z]/i)) {
+					output += (curChar + ' -> shift by ' + 
+										(isEncrypting ? shiftVal - 97 : -(shiftVal - 97)) + 
+										' -> ' + this.encrypt(curChar, [key[keyIdx]]) + '<br>');
+					keyIdx = ++keyIdx % key.length;
+				}
+			}
 
 			output += '<br>Step 4: Recombine the letters in the final message<br>' +
 			'Initial message: ' + str + '<br>Final message: ' + 
-			this.encrypt(str, [shiftVal.toString()]);
+			this.encrypt(str, [key]);
 			return output;
 	}
 

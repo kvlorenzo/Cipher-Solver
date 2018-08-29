@@ -77,6 +77,7 @@ export default class Caesar {
 			'by ' + Math.abs(shiftVal) + ' character(s)<br>' +
 			'Old: a b c d e... w x y z  -><br>New: ' +
 			this.encrypt('a b c d e... w x y z', [shiftVal.toString()]) +
+			
 			'<br><br>Step 2: Match the characters in the message to the newly ' +
 			'shifted alphabet<br>';
 			for (var i = 0; i < strLen; i++) {
