@@ -84,7 +84,7 @@ export default class Vigenere {
 			var keyIdx = 0;
 			for (var i = 0; i < strLen; i++) {
 				var curChar = str.charAt(i);
-				var shiftVal = key.charAt(keyIdx).toLowerCase().charCodeAt(0);
+				var shiftVal = settings[0].charAt(keyIdx).toLowerCase().charCodeAt(0);
 				if (curChar.match(/[a-z]/i)) {
 					output += (curChar + ' -> ' + settings[0].charAt(keyIdx) + '(' + 
 										(isEncrypting ? shiftVal - 97 : -(shiftVal - 97)) + 
@@ -97,7 +97,7 @@ export default class Vigenere {
 			keyIdx = 0;
 			for (var i = 0; i < strLen; i++) {
 				var curChar = str.charAt(i);
-				var shiftVal = key.charAt(keyIdx).toLowerCase().charCodeAt(0);
+				var shiftVal = settings[0].charAt(keyIdx).toLowerCase().charCodeAt(0);
 				if (curChar.match(/[a-z]/i)) {
 					output += (curChar + ' -> shift by ' + 
 										(isEncrypting ? shiftVal - 97 : -(shiftVal - 97)) + 
