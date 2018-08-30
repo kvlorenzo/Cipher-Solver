@@ -61,12 +61,13 @@ export default class Vigenere {
 		if (!settings || settings.length <= 0 || !(/[a-z]/i.test(settings[0]))) {
 			settings = this.defaultSettings;
 		}
-		var key = (isEncrypting) ? settings[0] : 
-							this.createDecryptKey(settings[0]);
+		var key = (isEncrypting) ? settings[0].toLowerCase() : 
+							this.createDecryptKey(settings[0].toLowerCase());
 		var strLen = Math.min(str.length, 7);
 		var shiftValArr = [];
 		for (var i = 0; i < key.length; i++) {
-			shiftValArr.push(key.charCodeAt(i) - 97);
+			var shift = settings[0].toLowerCase().charCodeAt(i) - 97;
+			shiftValArr.push(isEncrypting ? shift : -shift);
 		}
 		var output = '';
 		output += ((isEncrypting) ? 'Encrypting "' : 'Decrypting "') + 
@@ -79,8 +80,7 @@ export default class Vigenere {
 				var curChar = settings[0].charAt(i);
 				var shiftVal = curChar.toLowerCase().charCodeAt(0);
 				if (curChar.match(/[a-z]/i)) {
-					output += (curChar + ' ->  ' + shiftValArr[i] + '<br>';
-										//(isEncrypting ? shiftVal - 97 : -(shiftVal - 97)) + '<br>');
+					output += (curChar + ' ->  ' + shiftValArr[i] + '<br>');
 				}
 			}
 			output +='<br>Step 2: Assign each letter in the message to a letter in' +
@@ -91,8 +91,7 @@ export default class Vigenere {
 				var shiftVal = settings[0].charAt(keyIdx).toLowerCase().charCodeAt(0);
 				if (curChar.match(/[a-z]/i)) {
 					output += (curChar + ' -> ' + settings[0].charAt(keyIdx) + '(' + 
-										(isEncrypting ? shiftVal - 97 : -(shiftVal - 97)) + 
-										')<br>');
+										shiftValArr[keyIdx] + ')<br>');
 					keyIdx = ++keyIdx % key.length;
 				}
 			}
@@ -103,8 +102,7 @@ export default class Vigenere {
 				var curChar = str.charAt(i);
 				var shiftVal = settings[0].charAt(keyIdx).toLowerCase().charCodeAt(0);
 				if (curChar.match(/[a-z]/i)) {
-					output += (curChar + ' -> shift by ' + 
-										(isEncrypting ? shiftVal - 97 : -(shiftVal - 97)) + 
+					output += (curChar + ' -> shift by ' + shiftValArr[keyIdx] +
 										' -> ' + this.encrypt(curChar, [key[keyIdx]]) + '<br>');
 					keyIdx = ++keyIdx % key.length;
 				}
