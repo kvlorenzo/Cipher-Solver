@@ -40,13 +40,14 @@
 		<div class="wrapper">
 			<div class="inputarea">
 				<div class="msglabel"><strong>Message</strong></div>
-				<label class="switch">
-					<input type="checkbox" id="togBtn">
-					<div class="slider round">
-						<span class="dectoggle">DECRYPT</span>
-						<span class="enctoggle">ENCRYPT</span>
-					</div>
-				</label>
+				<div class="switch-field" id="togBtn">
+      		<input type="radio" id="switch_left" name="switch" 
+      				value="Encrypt" checked/>
+      		<label for="switch_left">Encrypt</label>
+      		<input type="radio" id="switch_right" name="switch" 
+      				value="Decrypt" />
+      		<label for="switch_right">Decrypt</label>
+    		</div>
 				<textarea id="inputbox" name="messagebox" 
 						placeholder="Write your test message here..."></textarea>
 			</div>
@@ -74,12 +75,10 @@
 				<button type="button" id="showStepsBtn">Show Steps</button>
 				<div id="steps"></div>
 			</div>
-
-
-
 			<div class="container">
 				<div class="jumbotron">
 					<p>Test</p>
+
 					<!--
 					<h2>Encryption/Decryption Solver</h2>
 					<form id="inputform">			
