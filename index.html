@@ -36,76 +36,99 @@
 				<a href="tutorial.html">Tutorials</a>
 				<a href="about.html">About</a>
   		</div>
-
-
-
-
-
-
-<!--
-			<div class="container">
-				<div id="logo">
-					<a href="index.html">
-					<img src="img/logo.png" alt="CipherSolver logo">
-				</div>
-				<nav>
-					<ul>
-						<li><a href="index.html">Encrypt</a></li>
-						<li><a href="tutorial.html">Cipher Tutorials</a></li>
-						<li><a href="about.html">About</a></li>
-					</ul>
-				</nav>
-			</div> -->
 		</header>
-		<div class="container">
-			<div class="jumbotron">
-				<h2>Encryption/Decryption Solver</h2>
-				<form id="inputform">			
-						<div class="form-group">		
-								<label class="switch">
-									<input type="checkbox" id="togBtn">
-									<div class="slider round">
-										<span class="dectoggle">DECRYPT</span>
-										<span class="enctoggle">ENCRYPT</span>
-									</div>
-								</label>
-						</div>
-						
-						<div class="form-group">							
-							<label for="technique">Cipher Technique</label>
-							<select id="technique" class="form-control">
-								<option value="Caesar">Caesar</option>
-								<option value="Vigenere">Vigenere</option>
-							</select>
-						</div>
-						<div class="form-group">		
-								<div class="msglabel"><strong>Message</strong></div>
-								<textarea id="inputbox" name="messagebox." 
-										placeholder="Write your message here..."></textarea>
-						</div>
-						<div class="row">
-							<div class="col-xs-4">
-								<h3>Cipher Settings</h3>
+		<div class="wrapper">
+			<div class="inputarea">
+				<div class="msglabel"><strong>Message</strong></div>
+				<label class="switch">
+					<input type="checkbox" id="togBtn">
+					<div class="slider round">
+						<span class="dectoggle">DECRYPT</span>
+						<span class="enctoggle">ENCRYPT</span>
+					</div>
+				</label>
+				<textarea id="inputbox" name="messagebox" 
+						placeholder="Write your test message here..."></textarea>
+			</div>
+			<div class="settingsarea">
+				<label for="technique">Cipher Technique</label>
+					<select id="technique" class="form-control">
+						<option value="Caesar">Caesar</option>
+						<button type="button" id="settingToggle" class="link"
+								data-text-swap="Hide Settings">Show/Hide Settings</button>
+						<option value="Vigenere">Vigenere</option>
+					</select>
+					<div id="settings"><h4><strong>Caesar<br></strong></h4>
+						<label for="Shift Value">Shift Value</label>
+						<input type="text" name="setting" id="shiftVal"
+								placeholder="Enter value (Default 7)">
+					</div>
+					<div id="keywarning">Invalid Key</div>
+			</div>
+			<div class="outputarea">
+				<div class="outputlabel"><strong>Output</strong></div>
+				<input type="text" id="outputbox" name="messagebox"
+						placeholer="Output appears here..."READONLY/>
+			</div>
+			<div class="stepsarea">
+				<button type="button" id="showStepsBtn">Show Steps</button>
+				<div id="steps"></div>
+			</div>
+
+
+
+			<div class="container">
+				<div class="jumbotron">
+					<p>Test</p>
+					<!--
+					<h2>Encryption/Decryption Solver</h2>
+					<form id="inputform">			
+							<div class="form-group">		
+									<label class="switch">
+										<input type="checkbox" id="togBtn">
+										<div class="slider round">
+											<span class="dectoggle">DECRYPT</span>
+											<span class="enctoggle">ENCRYPT</span>
+										</div>
+									</label>
 							</div>
-							<div class="col-xs-3">
-							 <button type="button" id="settingToggle" class="link"
-							 		data-text-swap="Hide Settings">Show/Hide Settings</button>
+							
+							<div class="form-group">							
+								<label for="technique">Cipher Technique</label>
+								<select id="technique" class="form-control">
+									<option value="Caesar">Caesar</option>
+									<option value="Vigenere">Vigenere</option>
+								</select>
 							</div>
-						</div>
-						<div id="settings"><h4><strong>Caesar<br></strong></h4>
-							<label for="Shift Value">Shift Value</label>
-							<input type="text" name="setting" id="shiftVal"
-									placeholder="Enter value (Default 7)">
-						</div>
-						<div id="keywarning">Invalid Key</div>
-						<h4>Output:</h4>
-						<textarea id="outputbox" name="messagebox." 
-										placeholder="Write your message here...">Hello</textarea>
-						<button type="button" id="showStepsBtn">Show Steps</button>
-						<div id="steps"></div>
-				</form>
+							<div class="form-group">		
+									<div class="msglabel"><strong>Message</strong></div>
+									<textarea id="inputbox" name="messagebox." 
+											placeholder="Write your message here..."></textarea>
+							</div>
+							<div class="row">
+								<div class="col-xs-4">
+									<h3>Cipher Settings</h3>
+								</div>
+								<div class="col-xs-3">
+								 <button type="button" id="settingToggle" class="link"
+								 		data-text-swap="Hide Settings">Show/Hide Settings</button>
+								</div>
+							</div>
+							<div id="settings"><h4><strong>Caesar<br></strong></h4>
+								<label for="Shift Value">Shift Value</label>
+								<input type="text" name="setting" id="shiftVal"
+										placeholder="Enter value (Default 7)">
+							</div>
+							<div id="keywarning">Invalid Key</div>
+							<h4>Output:</h4>
+							<textarea id="outputbox" name="messagebox." 
+											placeholder="Write your message here...">Hello</textarea>
+							<button type="button" id="showStepsBtn">Show Steps</button>
+							<div id="steps"></div>
+					</form>
+				-->
+				</div>
 			</div>
 		</div>
-		
 	</body>
 </html>
