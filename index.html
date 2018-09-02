@@ -48,8 +48,8 @@
       				value="Decrypt" />
       		<label for="switch_right">Decrypt</label>
     		</div>
-    		<input type="text" id="inputbox" name="messagebox"
-						placeholer="Write your message here"/>
+    		<textarea id="inputbox" name="messagebox" 
+							placeholder="Write your message here..."></textarea>
 			</div>
 			<div class="settingsarea">
 				<label for="technique">Cipher Technique</label>
@@ -68,8 +68,7 @@
 			</div>
 			<div class="outputarea">
 				<div class="outputlabel"><strong>Output</strong></div>
-				<input type="text" id="outputbox" name="messagebox"
-						placeholer="Output appears here..."READONLY/>
+				<textarea readonly id="outputbox" name="messagebox"></textarea>
 			</div>
 			<div class="stepsarea">
 				<button type="button" id="showStepsBtn">Show Steps</button>

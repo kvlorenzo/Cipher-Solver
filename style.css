@@ -39,26 +39,36 @@ header a.logo {
   align-items: center;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(150px, 300px));
   padding-left: 5%;
 } 
 
+/* Settings for the input area */
 .inputarea {
   grid-column: 1 / 3;
   grid-row: 1 / 3;
   padding: 1%;
 }
 
+textarea {
+  height: 200px;
+  width: 100%;
+  resize: none;
+}
+
+/* Settings for the settings area */
 .settingsarea {
   grid-column: 3 / 4;
   grid-row: 1 / 3;
 }
 
+/* Settings for the output area */
 .outputarea {
   grid-column: 4 / 6;
   grid-row: 1 / 3;
 }
 
+/* Settings for the right side bar */
 .container {
   grid-column: 6 / 8;
   grid-row: 1 / 6;
@@ -75,16 +85,6 @@ header a.logo {
 .msglabel {
   display:inline-block;
   padding-top: 10px;
-}
-
-#inputbox {
-  width: 100%;
-  height: 150px;
-}
-
-#outputbox {
-  width: 100%;
-  height: 150px;
 }
 
 .switch-field {
