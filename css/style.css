@@ -34,7 +34,9 @@ header a.logo {
 }
 
 .headline {
-  padding: 0 5%;
+  float:left;
+  padding-left: 5%;
+  width: 80%;
 }
 
 .headline h2 {
@@ -50,16 +52,17 @@ header a.logo {
   height: 100%;
   align-items: center;
   display: grid;
+  float: left;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(4, 85px);
   padding-left: 5%;
-  width: 100%;
+  width: 80%;
 } 
 
 /* Settings for the input area */
 .inputarea {
   grid-column: 1 / 3;
-  grid-row: 1 / 4;
+  grid-row: 2 / 4;
   padding: 1%;
 }
 
@@ -67,35 +70,37 @@ textarea {
   height: 200px;
   width: 100%;
   resize: none;
+  -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 /* Settings for the settings area */
 .settingsarea {
   grid-column: 3 / 4;
-  grid-row: 1 / 4;
+  grid-row: 2 / 4;
 }
 
 /* Settings for the output area */
 .outputarea {
   grid-column: 4 / 6;
-  grid-row: 1 / 4;
+  grid-row: 2 / 4;
 }
 
 /* Settings for the right side bar */
-.container {
-  background-color: #ededed;
-  color: #ededed;
-  grid-column: 7 / 8;
-  grid-row: 1 / 5;
-  max-width: 200px;
+.sidebar {
+  float: right;
+  height:100%;
+  padding: 2% 1%;
+  width: 15%;
 }
 
-.jumbotron {
-  font-family: 'Rokkitt';
-  font-size: 100%;
-  width: 1fr;
-  height: 100%;
-  max-width: 200px; 
+#testtest {
+   border-radius: 5px;
+    background: #ededed;
+    padding: 20px; 
+    width: auto;
+    height: auto; 
 }
 
 .msglabel {
