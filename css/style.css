@@ -3,6 +3,7 @@ html, body {
     height: 100%;
     max-width: 100%;
     overflow-x: hidden;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 /* Stylizes the headers' elements*/
@@ -32,21 +33,33 @@ header a.logo {
   padding-top: 5px;
 }
 
+.headline {
+  padding: 0 5%;
+}
+
+.headline h2 {
+  font-weight: bold;
+}
+
+.headline p {
+  font-size: 16px;
+}
 
 /* Wrapper class formats the website in grid format */
 .wrapper {
   height: 100%;
   align-items: center;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(150px, 300px));
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(4, 85px);
   padding-left: 5%;
+  width: 100%;
 } 
 
 /* Settings for the input area */
 .inputarea {
   grid-column: 1 / 3;
-  grid-row: 1 / 3;
+  grid-row: 1 / 4;
   padding: 1%;
 }
 
@@ -59,27 +72,30 @@ textarea {
 /* Settings for the settings area */
 .settingsarea {
   grid-column: 3 / 4;
-  grid-row: 1 / 3;
+  grid-row: 1 / 4;
 }
 
 /* Settings for the output area */
 .outputarea {
   grid-column: 4 / 6;
-  grid-row: 1 / 3;
+  grid-row: 1 / 4;
 }
 
 /* Settings for the right side bar */
 .container {
-  grid-column: 6 / 8;
-  grid-row: 1 / 6;
+  background-color: #ededed;
+  color: #ededed;
+  grid-column: 7 / 8;
+  grid-row: 1 / 5;
+  max-width: 200px;
 }
 
 .jumbotron {
   font-family: 'Rokkitt';
   font-size: 100%;
-  width: 100%;
+  width: 1fr;
   height: 100%;
-  /*min-width: 300px; */
+  max-width: 200px; 
 }
 
 .msglabel {
