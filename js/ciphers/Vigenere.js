@@ -6,7 +6,7 @@ export default class Vigenere {
 			'<h4><strong>Vigenere<br></strong></h4>\n' + 
 			'<label for="Keyword">Keyword (case-insensitive)</label>\n' +
 			'<input type="text" name="setting" id="keyword"\n' +  
-			'placeholder="Enter keyword (Default "key")">\n';
+			'placeholder="(Default = &quot;key&quot)">\n';
 		this.warning = 'Invalid keyword (must be letters only), ' +
 		               'using default ("key")';
 	}

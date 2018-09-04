@@ -6,7 +6,7 @@ export default class Caesar {
 			'<h4><strong>Caesar<br></strong></h4>\n' + 
 			'<label for="Shift Value">Shift Value</label>\n' +
 			'<input type="text" name="setting" id="shiftVal"\n' +  
-			'placeholder="Enter value (Default 7)">\n';
+			'placeholder="(Default = 7)">\n';
 		this.warning = 'Invalid shift value (must be number only), ' +
 		               'using default value (7)';
 	}

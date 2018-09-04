@@ -50,7 +50,7 @@ $(document).ready(function() {
     updateOutput();
   }
 
-  $('#togBtn').on('click', function() {
+  $('#togBtn').on('change', function() {
     isEncrypting = !isEncrypting;
     console.log('Encrypt/Decrypt button toggled to ' + isEncrypting);
     updateOutput();
@@ -64,11 +64,6 @@ $(document).ready(function() {
     console.log("Settings HTML" + $('#settings').html());
     updateSettings();
     updateOutput();
-  });
-
-  $('#settingToggle').on('click', function() {
-    console.log('settings display toggled');
-    $('#settings').toggle();
   });
 
   $('#inputbox').on('input', function() {
