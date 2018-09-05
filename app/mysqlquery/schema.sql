@@ -1,0 +1,8 @@
+CREATE TABLE messages (
+	id			INT PRIMARY KEY AUTO_INCREMENT,
+	technique 	VARCHAR(20) NOT_NULL,
+	encrypting 	TINYINT(1) NOT_NULL,
+	settings	VARCHAR(100) NOT_NULL,
+	time 		TIMESTAMP NOT_NULL,
+	message 	VARCHAR(100)
+);

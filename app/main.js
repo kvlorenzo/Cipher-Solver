@@ -28,7 +28,6 @@ handles the events from the initial page
 $(document).ready(function() {
 
   function updateOutput() {
-  console.log('updateOutput() called');
   var message = $('#inputbox').val();
   console.log("message is: " + message);
   $('#outputbox').val((isEncrypting ? cipher.encrypt(message, settings) : 
