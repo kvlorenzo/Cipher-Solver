@@ -28,7 +28,7 @@ $(document).ready(function() {
 
   function updateOutput() {
   var message = $('#inputbox').val();
-  console.log("message is: " + message);
+  console.log("Ciphering: " + message);
   $('#outputbox').val((isEncrypting ? cipher.encrypt(message, settings) : 
     cipher.decrypt(message, settings)));
   }
@@ -65,7 +65,6 @@ $(document).ready(function() {
   });
 
   $('#inputbox').on('input', function() {
-    console.log('inputbox changed');
     updateOutput();
   });
 
@@ -77,11 +76,9 @@ $(document).ready(function() {
 
   $('#showStepsBtn').on('click', function() {
     var message = $('#inputbox').val();
-    var data = retrieveData();
     console.log('Show steps button clicked');
     $('#steps').hide();
     $('#steps').html(cipher.showSteps(message, settings, isEncrypting));
     $('#steps').slideDown('slow', function() {});
-    $('#sidetext').html(data.message);
   });
 });
