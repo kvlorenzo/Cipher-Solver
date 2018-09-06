@@ -2,7 +2,6 @@
 import Caesar from './ciphers/Caesar.js';
 import Vigenere from './ciphers/Vigenere.js';
 
-
 var cipherMap = {};
 cipherMap['Caesar'] = new Caesar();
 cipherMap['Vigenere'] = new Vigenere();
@@ -78,9 +77,11 @@ $(document).ready(function() {
 
   $('#showStepsBtn').on('click', function() {
     var message = $('#inputbox').val();
+    var data = retrieveData();
     console.log('Show steps button clicked');
     $('#steps').hide();
     $('#steps').html(cipher.showSteps(message, settings, isEncrypting));
     $('#steps').slideDown('slow', function() {});
+    $('#sidetext').html(data.message);
   });
 });
