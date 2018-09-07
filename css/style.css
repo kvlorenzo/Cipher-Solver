@@ -37,6 +37,10 @@ header a {
   text-decoration: none;
 }
 
+header a:hover {
+  color: gray;
+}
+
 header a.logo {
   float: left;
   font-size: 30px;
