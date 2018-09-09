@@ -81,4 +81,8 @@ $(document).ready(function() {
     $('#steps').html(cipher.showSteps(message, settings, isEncrypting));
     $('#steps').slideDown('slow', function() {});
   });
+
+  $('#navicon').on('click', function() {
+    $("div.header-right").toggleClass("responsive");
+  })
 });
