@@ -80,6 +80,8 @@ $(document).ready(function() {
     $('#steps').hide();
     $('#steps').html(cipher.showSteps(message, settings, isEncrypting));
     $('#steps').slideDown('slow', function() {});
+
+    
   });
 
   $('#navicon').on('click', function() {
