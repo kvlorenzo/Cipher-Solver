@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" 
+				content="A website to encrypt messages for fun or other educational purposes">
+		<meta name="keywords" 
+				content="cipher solver, cryptography, encrypt, decrypt, caesar, vigenere, rot13, hill, 
+				playfair, rsa,">
+		<meta name="author" content="Kyle Lorenzo">
+		<title>CipherSolver - Encrypt your messages - steps given!</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+		<link rel="stylesheet" 
+				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" 
+				href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+				integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+				crossorigin="anonymous">
+		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rokkitt'>
+		<link rel="shortcut icon" type="image/png" href="img/csicon.png">
+	</head>
+	<body>
+		<script>
+				function createNavIcon() {
+					var header = document.getElementById("header-right");
+				  if (header.className === "header-right") {
+				    header.className += " responsive";
+				  }
+				  else {
+				  	header.className = "header-right";
+				  }
+				}
+		</script>
+		<div id="container">
+			<div id="main">
+				<header>
+					<a href="index.html" class="logo">
+							CipherSolver
+					</a>
+					<a href="javascript:void(0);" class="navicon" id="navicon" 
+							onclick="createNavIcon()">
+							<i class="fa fa-bars"></i>
+					</a>
+					<div class="header-right" id="header-right">
+						<a href="index.html">Encrypt</a>
+						<a href="tutorial.html">Tutorials</a>
+						<a href="about.html">About</a>
+		  		</div>
+				</header>
+				<div class="sidebar">
+					<div id="rightbox">
+						<div id="sidetext">Want to give feedback or contribute to this 
+								website? Check out our Github repository
+								<a href="https://github.com/kvlorenzo/Cipher-Solver">here</a>.
+						</div>
+					</div>
+				</div>
+				<div class="headline">
+					<h2>CipherSolver - Encrypt your messages - Steps given!</h2>
+					<div id="tutorial-text">
+						Check out some of our tutorials below:<br>
+						<div id="tutorial-list">
+								<a href="index.html">Caesar</a><br>
+								<a href="index.html">Vigenere</a><br>
+								<a href="index.html">Playfair</a><br><br>
+						</div>
+					</div>
+				</div> 
+			</div> <!-- End of main div -->
+		</div> <!-- End of container div -->
+		<footer>
+			<p>Copyright 2018 by Kyle Lorenzo</p>
+		</footer>
+	</body>
+</html>
