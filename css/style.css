@@ -275,3 +275,9 @@ footer p {
 #tutorial-list {
   padding-left: 2%;
 }
+
+/* CSS FOR THE ABOUT PAGE */
+#about-text {
+  font-size: 22px;
+  line-height: 30px;
+}
