@@ -2,6 +2,8 @@
 import Caesar from './ciphers/Caesar.js';
 import Vigenere from './ciphers/Vigenere.js';
 
+import queryHistory from './queryhistory.js';
+
 var cipherMap = {};
 cipherMap['Caesar'] = new Caesar();
 cipherMap['Vigenere'] = new Vigenere();
@@ -14,6 +16,12 @@ boolean to check if the decrypt or encrypt button is chosen
 true = encrypt, false = decrypt    
 */
 var isEncrypting = true;
+
+/*
+boolean to check if there is a current cipher history existing
+on the sidebar
+*/
+var hasActiveHistory = false;
 
 /*
 Ciphering techniques will be kept in an array of strings; will be
@@ -48,6 +56,18 @@ $(document).ready(function() {
     updateOutput();
   }
 
+  function getCurrentData() {
+    var data = {
+      technique: $('#technique').val(),
+      isEncrypting: isEncrypting,
+      settings: ((cipher.hasInvalidSettings(settings)) ?
+        cipher.defaultSettings : settings),
+      originalMessage: $('#inputbox').val(),
+      cipheredMessage: $('#outputbox').val()
+    };
+    return data;
+  }
+
   $('#togBtn').on('change', function() {
     isEncrypting = !isEncrypting;
     console.log('Encrypt/Decrypt button toggled to ' + isEncrypting);
@@ -59,7 +79,6 @@ $(document).ready(function() {
     console.log('Technique set to ' + technique);
     cipher = cipherMap[technique];
     $('#settings').html(cipher.HTMLText);
-    console.log("Settings HTML" + $('#settings').html());
     updateSettings();
     updateOutput();
   });
@@ -80,8 +99,17 @@ $(document).ready(function() {
     $('#steps').hide();
     $('#steps').html(cipher.showSteps(message, settings, isEncrypting));
     $('#steps').slideDown('slow', function() {});
+    var history = $('#history').html();
+    if (($('#inputbox').val()).length > 0) {
+      if (!hasActiveHistory) {
+        $('#history').html("");
+        hasActiveHistory = true;
+      }
+      $('#history').fadeOut(10);
+      $('#history').fadeIn();
+      $('#history').prepend(queryHistory(getCurrentData()));
+    }
 
-    
   });
 
   $('#navicon').on('click', function() {

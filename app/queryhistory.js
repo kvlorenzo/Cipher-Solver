@@ -9,12 +9,16 @@ class will take in the data as an object with the following properties:
   cipheredMessage - the ciphered message
 */
 
-export class QueryHistory {
-	constructor() {
-    this.curHistory = [];
+export default function queryHistory(data) {
+  if (!data.originalMessage) {
+    return '';
   }
-
-  addCipher(data) {
-
-  }
+  var htmlStr = '';
+  htmlStr += 
+    '<strong>Technique:</strong> ' + data.technique + '<br>' +
+    ((data.isEncrypting) ? 'Encrypt' : 'Decrypt') + '<br>' +
+    '<strong>Original Message:</strong> <br>' + data.originalMessage + '<br>' +
+    '<strong>Ciphered Message:</strong> <br>' + data.cipheredMessage + '<br>' +
+    'Created on ' + new Date().toLocaleString() + '<br><br>';
+    return htmlStr;
 }

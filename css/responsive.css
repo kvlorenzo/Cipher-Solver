@@ -54,7 +54,7 @@
   	color: white;
   	display: block;
     float: right;
-    position: absolute;
+    position: relative;
     right: 10px;
     top: 6px;
   }
