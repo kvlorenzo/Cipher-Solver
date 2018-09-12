@@ -114,5 +114,5 @@ $(document).ready(function() {
 
   $('#navicon').on('click', function() {
     $("div.header-right").toggleClass("responsive");
-  })
+  });
 });

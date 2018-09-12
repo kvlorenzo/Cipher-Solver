@@ -1,0 +1,40 @@
+From wikipedia: <a href="">https://en.wikipedia.org/wiki/Caesar_cipher</a>
+<br><br>
+In cryptography, a Caesar cipher, also known as Caesar's cipher, the shift cipher, Caesar's code or Caesar shift, is one of the
+simplest and most widely known encryption techniques. It is a type of substitution cipher in which each letter in the plaintext
+is replaced by a letter some fixed number of positions down the alphabet. For example, with a left shift of 3, D would be
+replaced by A, E would become B, and so on. The method is named after Julius Caesar, who used it in his private correspondence.
+<br><br>
+
+The transformation can be represented by aligning two alphabets; the cipher alphabet is the plain alphabet rotated left or right by some number of positions. For instance, here is a Caesar cipher using a left rotation of three places, equivalent to a right shift of 23 (the shift parameter is used as the key):
+<br><br>
+
+Plain:    ABCDEFGHIJKLMNOPQRSTUVWXYZ
+<br><br>
+Cipher:   XYZABCDEFGHIJKLMNOPQRSTUVW
+<br><br>
+When encrypting, a person looks up each letter of the message in the "plain" line and writes down the corresponding letter in the "cipher" line.
+<br><br>
+
+Plaintext:  THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+<br><br>
+Ciphertext: QEB NRFZH YOLTK CLU GRJMP LSBO QEB IXWV ALD
+<br><br>
+Deciphering is done in reverse, with a right shift of 3.
+<br><br>
+
+The encryption can also be represented using modular arithmetic by first transforming the letters into numbers, according to the scheme, A → 0, B → 1, ..., Z → 25. Encryption of a letter x by a shift n can be described mathematically as,
+<br><br>
+
+E(x)=(x+n) mod 26
+<br><br>
+Decryption is performed similarly,
+<br><br>
+
+D(x)=(x-n) mod 26
+<br><br>
+(There are different definitions for the modulo operation. In the above, the result is in the range 0 to 25; i.e., if x + n or x − n are not in the range 0 to 25, we have to subtract or add 26.)
+<br><br>
+
+The replacement remains the same throughout the message, so the cipher is classed as a type of monoalphabetic substitution, as opposed to polyalphabetic substitution.
+<br><br>

@@ -22,17 +22,10 @@
 		<link rel="shortcut icon" type="image/png" href="img/icon.png">
 	</head>
 	<body>
-		<script>
-				function createNavIcon() {
-					var header = document.getElementById("header-right");
-				  if (header.className === "header-right") {
-				    header.className += " responsive";
-				  }
-				  else {
-				  	header.className = "header-right";
-				  }
-				}
-		</script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  			crossorigin="anonymous"></script>
+  	<script type="module" src="/src/parseurl.js"></script>
 		<div id="container">
 			<div id="main">
 				<header>
@@ -51,19 +44,18 @@
 				</header>
 				<div class="sidebar">
 					<div id="rightbox">
-						<div id="sidetext">Check out some of our ciphering tutorials!<br>
-								<a href="tutorial.html?cipher=Caesar">Caesar</a><br>
-								<a href="tutorial.html?cipher=Vigenere">Vigenere</a><br>
+						<div id="sidetext">Want to give feedback or contribute to this 
+								website? Check out our Github repository
+								<a href="https://github.com/kvlorenzo/Cipher-Solver">here</a>.
 						</div>
 					</div>
 				</div>
 				<div class="headline">
 					<h2>CipherSolver - Encrypt your messages - Steps given!</h2>
-					<div id="about-text">
-						<strong>About</strong><br>
-						Created by Kyle Lorenzo. Yeah that's pretty much it. Check out the
-						github repository 
-						<a href="https://github.com/kvlorenzo/Cipher-Solver">here</a>.
+					<div id="tutorial-text">
+						Tutorial<br>
+					</div>
+					<div id="tutorial-content">
 					</div>
 				</div> 
 			</div> <!-- End of main div -->
